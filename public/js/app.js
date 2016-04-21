@@ -1,4 +1,8 @@
 var socket = io();
+var name = getQueryVariable('name') || 'Anonymous';
+var room = getQueryVariable('room') || 'General';
+
+console.log(name + ' wants to join ' + room);
 
 socket.on('connect', function () {
 	console.log('Connected to socket.io server!');
@@ -10,7 +14,9 @@ socket.on('message', function (message) {
 	var ts = moment(message.now);
 	ts = ts.local();
 	ts = ts.format('h:mm a');
-	jQuery('.messages').append('<p><b>' + ts + ':</b> '+ message.text + '<p>');
+	var $message = jQuery('.messages');
+	$message.append('<p><b>' + message.name + ' ' + ts + ' </b><p>');
+	$message.append('<p>' + message.text + '<p>');
 });
 
 // Handles submitting of new message
@@ -22,6 +28,7 @@ $form.on('submit', function (event) {
 	var $message = $form.find('input[name=message]');
 	var now = moment();
 	socket.emit('message', {
+		name: name,
 		text: $message.val(),
 		now: now
 	});
