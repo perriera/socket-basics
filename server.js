@@ -5,6 +5,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var moment = require('moment');
 
+// prototype
+
 app.use(express.static(__dirname + '/public'));
 
 var clientInfo = {};
