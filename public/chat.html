@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Socket.io Basics</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
 	</head>
 	<body>
 		<h1 class="room"></h1>
@@ -10,8 +11,10 @@
 			<!-- Messages show up here -->
 		</div>
 		<form id='message-form'>
-			<input type="text" name="message" />
-			<input type="submit" /> 
+			<div class="form-group">
+				<input type="text" class="form-control" name="message" />
+				<input type="submit" class="btn btn-primary" /> 
+			</div>
 		</form>
 		<div><a href="/index.html">Change Details</a></div>
 		<script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
